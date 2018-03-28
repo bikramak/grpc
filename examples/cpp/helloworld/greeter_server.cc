@@ -40,14 +40,14 @@ using helloworld::Greeter;
 class GreeterServiceImpl final : public Greeter::Service {
   Status SayHello(ServerContext* context, const HelloRequest* request,
                   HelloReply* reply) override {
-    std::string prefix("Hello ");
+    std::string prefix("Save ");
     reply->set_message(prefix + request->name());
     return Status::OK;
   }
 };
 
 void RunServer() {
-  std::string server_address("0.0.0.0:50051");
+  std::string server_address("*:50051");
   GreeterServiceImpl service;
 
   ServerBuilder builder;
